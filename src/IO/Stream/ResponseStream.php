@@ -173,7 +173,7 @@ class ResponseStream implements StreamInterface
         return null;
     }
 
-    public function tell()
+    public function tell(): int
     {
         return $this->stream ? ftell($this->stream) : false;
     }
@@ -213,7 +213,7 @@ class ResponseStream implements StreamInterface
     /**
      * {@inheritDoc}
      */
-    public function write($string)
+    public function write($string): int
     {
         $this->size = null;
 
