@@ -173,7 +173,7 @@ class ResponseStream implements StreamInterface
         return null;
     }
 
-    public function tell()
+    public function tell(): int
     {
         return $this->stream ? ftell($this->stream) : false;
     }
@@ -197,7 +197,7 @@ class ResponseStream implements StreamInterface
     /**
      * {@inheritDoc}
      */
-    public function seek($offset, $whence = \SEEK_SET): void
+    public function seek(int $offset, int $whence = \SEEK_SET): void
     {
         $this->stream !== null && $this->seekable && fseek($this->stream, $offset, $whence);
     }
@@ -213,7 +213,7 @@ class ResponseStream implements StreamInterface
     /**
      * {@inheritDoc}
      */
-    public function write($string)
+    public function write(string $string): int
     {
         $this->size = null;
 
@@ -231,7 +231,7 @@ class ResponseStream implements StreamInterface
     /**
      * {@inheritDoc}
      */
-    public function read($length): string
+    public function read(int $length): string
     {
         return $this->stream !== null && $this->readable ? fread($this->stream, $length) : '';
     }
